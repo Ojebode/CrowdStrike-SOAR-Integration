@@ -1,0 +1,119 @@
+{
+    "name": "CrowdStrike",
+    "label": "CrowdStrike",
+    "description": "CrowdStrike Host Management Connector",
+    "publisher": "Oladotun Joseph ",
+    "cs_approved": false,
+    "cs_compatible": true,
+    "version": "1.0.0",
+    "category": "SIEM",
+    "icon_small_name": "small_icon.png",
+    "icon_large_name": "large_icon.png",
+    "configuration": {
+        "fields": [
+            {
+                "title": "URL",
+                "name": "url",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "value": "api.crowdstrike.com"
+            },
+            {
+                "title": "Client ID",
+                "name": "clientid",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "text",
+                "description": "Client ID created specially for this client."
+            },
+            {
+                "title": "Client Secret",
+                "name": "clientsecret",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "password",
+                "description": "Client secret generated specially for this client."
+            },
+            {
+                "title": "Verify SSL",
+                "name": "verify_ssl",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "type": "checkbox",
+                "value": false
+            }
+        ]
+    },
+    "operations": [
+        {
+            "operation": "contain_host",
+            "title": "Contain Host",
+            "annotation": "isolate_host",
+            "category": "containment",
+            "description": "Isolate host to prevent communication with other systems",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Host ID",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "type": "text",
+                    "name": "hostid"
+                }
+            ],
+            "output_schema": {
+                "meta": {
+                    "query_time": "",
+                    "powered_by": "",
+                    "trace_id": ""
+                },
+                "resources": [
+                    {
+                    "id": "",
+                    "path": ""
+                    }
+                ],
+                "errors": []
+            }
+        },
+		{
+            "operation": "lift_hostcontainment",
+            "title": "Lift Host Containment",
+            "description": "Lift host containment",
+			"annotation": "unisolate_host",
+            "category": "containment",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Host ID",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "type": "text",
+                    "name": "lifthostid"
+                }
+            ],
+            "output_schema": {
+                "meta": {
+                    "query_time": "",
+                    "powered_by": "",
+                    "trace_id": ""
+                },
+                "resources": [
+                    {
+                    "id": "",
+                    "path": ""
+                    }
+                ],
+                "errors": []
+            }
+        }
+		
+    ]
+}
